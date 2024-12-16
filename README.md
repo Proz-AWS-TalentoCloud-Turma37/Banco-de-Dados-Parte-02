@@ -230,6 +230,7 @@ Esta atividade demonstra como a normalização melhora a estrutura de um banco d
 
 </details>
 
+ <details>
 <summary>Resolução da Atividade: Normalização de Dados em SQL Server </summary>
 
 ## Passo 1: Criar o Banco de Dados
