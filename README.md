@@ -4,7 +4,7 @@
 
 A **normalização de dados** é um processo utilizado no design de bancos de dados para organizar os dados de forma eficiente, reduzindo a redundância e melhorando a integridade dos dados. Este processo envolve a divisão de tabelas grandes e complexas em tabelas menores e o estabelecimento de relacionamentos entre elas.
 
-![O que é normalização](images/normalization-intro.png)
+![O que é normalização](https://upload.wikimedia.org/wikipedia/commons/2/2d/Database_Normalization.png)
 
 ---
 
@@ -15,7 +15,7 @@ A **normalização de dados** é um processo utilizado no design de bancos de da
 3. **Melhorar a Integridade dos Dados**: Garantir que os dados estejam estruturados corretamente.
 4. **Facilitar a Manutenção**: Tornar o banco de dados mais flexível e fácil de gerenciar.
 
-![Objetivos da normalização](images/normalization-objectives.png)
+![Objetivos da normalização](https://www.researchgate.net/profile/Shan-Khurshid/publication/328295359/figure/fig1/AS:681704152383492@1539737725147/Normalization-objectives.png)
 
 ---
 
@@ -31,11 +31,11 @@ A normalização é realizada em etapas chamadas de **Formas Normais (FN)**. Aba
 **Exemplo:**
 Tabela não normalizada:
 
-![Exemplo 1FN - antes](images/1fn-before.png)
+![Exemplo 1FN - antes](https://i.imgur.com/ZpucHkT.png)
 
 Após normalização para 1FN:
 
-![Exemplo 1FN - depois](images/1fn-after.png)
+![Exemplo 1FN - depois](https://i.imgur.com/BvAz4E6.png)
 
 ---
 
@@ -48,7 +48,7 @@ Dependências parciais em tabelas com chaves compostas.
 
 **Exemplo:**
 
-![Exemplo 2FN](images/2fn.png)
+![Exemplo 2FN](https://i.imgur.com/B45KyWr.png)
 
 ---
 
@@ -59,17 +59,17 @@ Dependências parciais em tabelas com chaves compostas.
 **Exemplo:**
 Tabela na 2FN:
 
-![Exemplo 3FN - antes](images/3fn-before.png)
+![Exemplo 3FN - antes](https://i.imgur.com/ZxLmNz6.png)
 
 Após normalização para 3FN:
 
 **Tabela Produto:**
 
-![Tabela Produto](images/3fn-product.png)
+![Tabela Produto](https://i.imgur.com/VgVQ4vY.png)
 
 **Tabela Categoria:**
 
-![Tabela Categoria](images/3fn-category.png)
+![Tabela Categoria](https://i.imgur.com/mkx7C0g.png)
 
 ---
 
@@ -82,7 +82,7 @@ Após normalização para 3FN:
 
 ## Benefícios da Normalização
 
-![Benefícios da Normalização](images/benefits.png)
+![Benefícios da Normalização](https://i.imgur.com/WwDUFV3.png)
 
 1. **Redução de Redundância**: Dados duplicados são minimizados.
 2. **Melhoria da Consistência**: Menos erros e inconsistências.
@@ -93,7 +93,7 @@ Após normalização para 3FN:
 
 ## Desvantagens da Normalização
 
-![Desvantagens da Normalização](images/disadvantages.png)
+![Desvantagens da Normalização](https://i.imgur.com/xH4sqnZ.png)
 
 1. **Complexidade Aumentada**: A estrutura do banco de dados pode se tornar mais complexa.
 2. **Desempenho de Consulta**: Pode haver perda de desempenho em consultas devido ao aumento do número de junções entre tabelas.
@@ -105,7 +105,7 @@ Após normalização para 3FN:
 - **Normalizar**: Quando a integridade dos dados e a redução de redundâncias são mais importantes do que o desempenho.
 - **Não Normalizar (ou Desnormalizar)**: Quando o desempenho é mais crítico, como em sistemas de relatórios ou bancos de dados OLAP.
 
-![Normalizar ou Desnormalizar](images/normalize-vs-denormalize.png)
+![Normalizar ou Desnormalizar](https://i.imgur.com/wd5Di1D.png)
 
 ---
 
