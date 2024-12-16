@@ -403,6 +403,7 @@ WHERE c.NomeCategoria = 'Papelaria';
 
 
 </details>
+
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
