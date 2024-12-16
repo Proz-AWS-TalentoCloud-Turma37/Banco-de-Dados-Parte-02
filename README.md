@@ -4,7 +4,7 @@
 # Normalização de Dados em Banco de Dados
 
 <details>
-<summary>1 - O que é Normaliza~ção em Banco de Dados?</summary>
+<summary>1 - O que é Normalização em Banco de Dados?</summary>
 
    ## Introdução
 
@@ -130,7 +130,8 @@ Sinta-se à vontade para contribuir com este repositório! Sugestões, correçõ
 ---
 </details>
 
-# Atividade Prática: Normalização de Dados em Banco de Dados
+<details>
+<summary> Atividade Prática: Normalização de Dados em Banco de Dados</summary>
 
 Você foi contratado para organizar os dados de uma loja fictícia chamada **Loja XYZ**. Atualmente, as informações dos produtos, categorias e fornecedores estão armazenadas de forma desorganizada em uma única tabela. Sua tarefa é aplicar as regras de normalização e reorganizar os dados em tabelas normalizadas.
 
@@ -227,7 +228,7 @@ A tabela já está na 3FN, pois:
 
 Esta atividade demonstra como a normalização melhora a estrutura de um banco de dados, reduzindo redundâncias e facilitando a manutenção. Certifique-se de revisar as formas normais e aplicar as regras corretamente para organizar os dados da melhor forma possível.
 
-
+</details>
 
 
 ## Licença
