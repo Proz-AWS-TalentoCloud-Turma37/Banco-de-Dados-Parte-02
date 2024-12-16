@@ -233,6 +233,31 @@ Esta atividade demonstra como a normalização melhora a estrutura de um banco d
  <details>
 <summary>Resolução da Atividade: Normalização de Dados em SQL Server </summary>
 
+## Tabela não Normalizada 
+
+````sql
+-- Criar a tabela
+CREATE TABLE ProdutosDetalhes (
+    ProdutoID INT PRIMARY KEY,
+    NomeProduto NVARCHAR(50) NOT NULL,
+    Categoria NVARCHAR(50) NOT NULL,
+    FornecedorID INT NOT NULL,
+    NomeFornecedor NVARCHAR(50) NOT NULL,
+    TelefoneFornecedor NVARCHAR(15) NOT NULL,
+    Preco DECIMAL(10, 2) NOT NULL
+);
+
+-- Inserir os dados na tabela
+INSERT INTO ProdutosDetalhes (ProdutoID, NomeProduto, Categoria, FornecedorID, NomeFornecedor, TelefoneFornecedor, Preco)
+VALUES
+(1, 'Caneta Azul', 'Papelaria', 101, 'Fornecedora ABC', '(11) 99999-9999', 2.50),
+(2, 'Caneta Vermelha', 'Papelaria', 101, 'Fornecedora ABC', '(11) 99999-9999', 2.50),
+(3, 'Caderno A4', 'Papelaria', 102, 'Fornecedora XYZ', '(21) 88888-8888', 15.00),
+(4, 'Calculadora', 'Eletrônicos', 103, 'Fornecedora DEF', '(31) 77777-7777', 45.00),
+(5, 'Mouse Sem Fio', 'Eletrônicos', 103, 'Fornecedora DEF', '(31) 77777-7777', 75.00);
+
+````
+
 ## Passo 1: Criar o Banco de Dados
 
 Crie o banco de dados chamado **LojaXYZ** para armazenar os dados normalizados.
@@ -283,7 +308,6 @@ CREATE TABLE Produtos (
     FOREIGN KEY (FornecedorID) REFERENCES Fornecedores(FornecedorID)
 );
 ````
-
 ## Passo 3: Inserir Dados nas Tabelas
 
 3.1 Inserir Dados na Tabela Categorias
@@ -295,7 +319,6 @@ VALUES
 (1, 'Papelaria'),
 (2, 'Eletrônicos');
 ````
-</details>
 
 3.2 Inserir Dados na Tabela Fornecedores
 Adicione os fornecedores e seus contatos.
@@ -321,7 +344,63 @@ VALUES
 (5, 'Mouse Sem Fio', 2, 103, 75.00);
 ````
 
+Passo 4: Consultar os Dados
+4.1 Produtos com Suas Categorias
+Realize uma consulta para listar os produtos junto com suas respectivas categorias e preços.
 
+````sql
+SELECT p.NomeProduto, c.NomeCategoria, p.Preco
+FROM Produtos p
+JOIN Categorias c ON p.CategoriaID = c.CategoriaID;
+````
+
+4.2 Informações de Fornecedores e Produtos
+Liste os fornecedores e os produtos que eles fornecem, com os preços.
+
+````sql
+SELECT f.NomeFornecedor, f.TelefoneFornecedor, p.NomeProduto, p.Preco
+FROM Fornecedores f
+JOIN Produtos p ON f.FornecedorID = p.FornecedorID;
+````
+
+4.3 Listar Produtos de uma Categoria Específica
+Filtre os produtos de uma categoria específica, como "Papelaria".
+
+````sql
+SELECT p.NomeProduto, p.Preco
+FROM Produtos p
+JOIN Categorias c ON p.CategoriaID = c.CategoriaID
+WHERE c.NomeCategoria = 'Papelaria';
+````
+## Estrutura Normalizada Final
+
+### Tabela Produtos
+
+| Produto ID | Nome Produto      | Categoria ID | Fornecedor ID | Preço   |
+|------------|-------------------|--------------|---------------|---------|
+| 1          | Caneta Azul       | 1            | 101           | 2.50    |
+| 2          | Caneta Vermelha   | 1            | 101           | 2.50    |
+| 3          | Caderno A4        | 1            | 102           | 15.00   |
+| 4          | Calculadora       | 2            | 103           | 45.00   |
+| 5          | Mouse Sem Fio     | 2            | 103           | 75.00   |
+
+### Tabela Categorias
+
+| Categoria ID | Nome Categoria |
+|--------------|----------------|
+| 1            | Papelaria      |
+| 2            | Eletrônicos    |
+
+### Tabela Fornecedores
+
+| Fornecedor ID | Nome Fornecedor  | Telefone Fornecedor |
+|---------------|------------------|---------------------|
+| 101           | Fornecedora ABC  | (11) 99999-9999     |
+| 102           | Fornecedora XYZ  | (21) 88888-8888     |
+| 103           | Fornecedora DEF  | (31) 77777-7777     |
+
+
+</details>
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
