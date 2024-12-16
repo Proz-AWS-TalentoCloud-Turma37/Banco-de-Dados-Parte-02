@@ -4,7 +4,7 @@
 # Normalização de Dados em Banco de Dados
 
 <details>
-<summary>1 - O que é Normalização em Banco de Dados?</summary>
+<summary>1-O que é Normalização em Banco de Dados?</summary>
 
    ## Introdução
 
@@ -131,7 +131,7 @@ Sinta-se à vontade para contribuir com este repositório! Sugestões, correçõ
 </details>
 
 <details>
-<summary> Atividade Prática: Normalização de Dados em Banco de Dados</summary>
+<summary>2-Atividade Prática: Normalização de Dados em Banco de Dados</summary>
 
 Você foi contratado para organizar os dados de uma loja fictícia chamada **Loja XYZ**. Atualmente, as informações dos produtos, categorias e fornecedores estão armazenadas de forma desorganizada em uma única tabela. Sua tarefa é aplicar as regras de normalização e reorganizar os dados em tabelas normalizadas.
 
@@ -231,7 +231,7 @@ Esta atividade demonstra como a normalização melhora a estrutura de um banco d
 </details>
 
  <details>
-<summary>Resolução da Atividade: Normalização de Dados em SQL Server </summary>
+<summary>3-Resolução da Atividade: Normalização de Dados em SQL Server </summary>
 
 ## Tabela não Normalizada 
 
@@ -308,6 +308,7 @@ CREATE TABLE Produtos (
     FOREIGN KEY (FornecedorID) REFERENCES Fornecedores(FornecedorID)
 );
 ````
+
 ## Passo 3: Inserir Dados nas Tabelas
 
 3.1 Inserir Dados na Tabela Categorias
@@ -344,7 +345,8 @@ VALUES
 (5, 'Mouse Sem Fio', 2, 103, 75.00);
 ````
 
-Passo 4: Consultar os Dados
+## Passo 4: Consultar os Dados
+
 4.1 Produtos com Suas Categorias
 Realize uma consulta para listar os produtos junto com suas respectivas categorias e preços.
 
