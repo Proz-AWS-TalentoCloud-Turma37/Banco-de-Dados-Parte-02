@@ -4,8 +4,9 @@
 # Normalização de Dados em Banco de Dados
 
 <details>
-<summary>O que é Normaliza~ção em Banco de Dados?</summary>summary>
-## Introdução
+<summary>1 - O que é Normaliza~ção em Banco de Dados?</summary>
+
+   ## Introdução
 
 A **normalização de dados** é um processo utilizado no design de bancos de dados para organizar os dados de forma eficiente, reduzindo a redundância e melhorando a integridade dos dados. Este processo envolve a divisão de tabelas grandes e complexas em tabelas menores e o estabelecimento de relacionamentos entre elas.
 
