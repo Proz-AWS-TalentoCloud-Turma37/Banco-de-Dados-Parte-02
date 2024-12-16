@@ -3,6 +3,8 @@
 
 # Normalização de Dados em Banco de Dados
 
+<details>
+<summary>O que é Normaliza~ção em Banco de Dados?</summary>summary>
 ## Introdução
 
 A **normalização de dados** é um processo utilizado no design de bancos de dados para organizar os dados de forma eficiente, reduzindo a redundância e melhorando a integridade dos dados. Este processo envolve a divisão de tabelas grandes e complexas em tabelas menores e o estabelecimento de relacionamentos entre elas.
@@ -125,7 +127,110 @@ Veja exemplos detalhados de normalização em [exemplos.md](./exemplos.md).
 Sinta-se à vontade para contribuir com este repositório! Sugestões, correções e exemplos adicionais são bem-vindos. Faça um **fork** e envie seu **pull request**.
 
 ---
+</details>
+
+# Atividade Prática: Normalização de Dados em Banco de Dados
+
+Você foi contratado para organizar os dados de uma loja fictícia chamada **Loja XYZ**. Atualmente, as informações dos produtos, categorias e fornecedores estão armazenadas de forma desorganizada em uma única tabela. Sua tarefa é aplicar as regras de normalização e reorganizar os dados em tabelas normalizadas.
+
+---
+
+## Tabela Inicial (Não Normalizada)
+
+Abaixo está a tabela inicial, onde todas as informações estão misturadas e contém redundâncias:
+
+| Produto ID | Nome Produto      | Categoria     | Fornecedor ID | Nome Fornecedor  | Telefone Fornecedor | Preço   |
+|------------|-------------------|---------------|---------------|------------------|---------------------|---------|
+| 1          | Caneta Azul       | Papelaria     | 101           | Fornecedora ABC  | (11) 99999-9999     | 2.50    |
+| 2          | Caneta Vermelha   | Papelaria     | 101           | Fornecedora ABC  | (11) 99999-9999     | 2.50    |
+| 3          | Caderno A4        | Papelaria     | 102           | Fornecedora XYZ  | (21) 88888-8888     | 15.00   |
+| 4          | Calculadora       | Eletrônicos   | 103           | Fornecedora DEF  | (31) 77777-7777     | 45.00   |
+| 5          | Mouse Sem Fio     | Eletrônicos   | 103           | Fornecedora DEF  | (31) 77777-7777     | 75.00   |
+
+---
+
+## Instruções
+
+1. **Analisar a tabela inicial**:
+   - Identifique os problemas de redundância de dados.
+   - Observe quais informações podem ser separadas em diferentes tabelas.
+
+2. **Aplicar a 1ª Forma Normal (1FN)**:
+   - Garanta que todos os campos contenham apenas valores atômicos (não divisíveis).
+   - Remova repetições de dados.
+
+3. **Aplicar a 2ª Forma Normal (2FN)**:
+   - Separe os dados em tabelas menores, garantindo que todos os atributos dependam totalmente da chave primária.
+
+4. **Aplicar a 3ª Forma Normal (3FN)**:
+   - Elimine dependências transitivas (quando um atributo não chave depende de outro atributo não chave).
+
+---
+
+## Resolução Esperada
+
+### Passo 1: Após aplicar a 1ª Forma Normal (1FN)
+
+Crie tabelas separadas para **Produtos**, **Categorias** e **Fornecedores**:
+
+**Tabela Produtos:**
+
+| Produto ID | Nome Produto      | Categoria ID | Fornecedor ID | Preço   |
+|------------|-------------------|--------------|---------------|---------|
+| 1          | Caneta Azul       | 1            | 101           | 2.50    |
+| 2          | Caneta Vermelha   | 1            | 101           | 2.50    |
+| 3          | Caderno A4        | 1            | 102           | 15.00   |
+| 4          | Calculadora       | 2            | 103           | 45.00   |
+| 5          | Mouse Sem Fio     | 2            | 103           | 75.00   |
+
+**Tabela Categorias:**
+
+| Categoria ID | Nome Categoria |
+|--------------|----------------|
+| 1            | Papelaria      |
+| 2            | Eletrônicos    |
+
+**Tabela Fornecedores:**
+
+| Fornecedor ID | Nome Fornecedor  | Telefone Fornecedor |
+|---------------|------------------|---------------------|
+| 101           | Fornecedora ABC  | (11) 99999-9999     |
+| 102           | Fornecedora XYZ  | (21) 88888-8888     |
+| 103           | Fornecedora DEF  | (31) 77777-7777     |
+
+---
+
+### Passo 2: Após aplicar a 2ª Forma Normal (2FN)
+
+Já realizado no passo anterior, as dependências parciais foram eliminadas ao separar categorias e fornecedores.
+
+---
+
+### Passo 3: Após aplicar a 3ª Forma Normal (3FN)
+
+A tabela já está na 3FN, pois:
+- Não há dependências transitivas.
+- Cada atributo não chave depende exclusivamente da chave primária.
+
+---
+
+## Tarefa Final
+
+1. Reorganize as tabelas acima em um banco de dados relacional.
+2. Crie os relacionamentos entre as tabelas usando **chaves primárias** e **chaves estrangeiras**.
+3. Teste as tabelas com alguns exemplos de inserção, atualização e exclusão para garantir que as redundâncias foram eliminadas e os dados estão consistentes.
+
+---
+
+## Conclusão
+
+Esta atividade demonstra como a normalização melhora a estrutura de um banco de dados, reduzindo redundâncias e facilitando a manutenção. Certifique-se de revisar as formas normais e aplicar as regras corretamente para organizar os dados da melhor forma possível.
+
+
+
 
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
+
+
