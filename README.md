@@ -4,7 +4,90 @@
 # Normalização de Dados em Banco de Dados
 
 <details>
-<summary>1-O que é Normalização em Banco de Dados?</summary>
+<summary>1-A História da Normalização de Dados em Bancos de Dados</summary>
+
+## O Início dos Bancos de Dados Relacionais
+
+A ideia de **normalização de dados** nasceu junto com o advento dos bancos de dados relacionais. No final da década de 1960 e início da década de 1970, as organizações começaram a usar bancos de dados para armazenar e gerenciar grandes volumes de informações. No entanto, as técnicas usadas naquela época geravam redundâncias, inconsistências e dificuldades na manutenção dos dados.
+
+Foi nesse contexto que, em 1970, **Edgar F. Codd**, cientista da computação britânico, apresentou o modelo relacional em seu artigo intitulado *"A Relational Model of Data for Large Shared Data Banks"*. Este modelo revolucionou a forma como os dados eram organizados, propondo o uso de tabelas relacionadas por chaves, em vez de estruturas hierárquicas ou redes complexas.
+
+---
+
+## O Conceito de Normalização
+
+A normalização foi introduzida como um método para organizar os dados em tabelas de maneira eficiente, eliminando redundâncias e garantindo a consistência dos dados. Em 1971, Edgar F. Codd introduziu o conceito de **1ª Forma Normal (1NF)**, seguido de refinamentos que levaram às demais formas normais.
+
+A normalização baseia-se na ideia de dividir os dados em tabelas menores e definir relacionamentos claros entre elas. Isso minimiza a duplicação de dados e garante que cada tabela armazene apenas um conjunto específico de informações.
+
+---
+
+## Principais Etapas da Normalização
+
+### **1ª Forma Normal (1NF)** – 1971
+- **Proposta por:** Edgar F. Codd.
+- **Objetivo:** Garantir que todos os atributos de uma tabela contenham valores atômicos (não divisíveis).
+- **Impacto:** Eliminou estruturas de dados aninhadas ou repetitivas em uma única tabela.
+
+### **2ª Forma Normal (2NF)** – 1972
+- **Proposta por:** Edgar F. Codd.
+- **Objetivo:** Eliminar dependências parciais, onde atributos dependem de parte de uma chave composta.
+- **Impacto:** Tornou as tabelas mais organizadas, especialmente em casos com chaves compostas.
+
+### **3ª Forma Normal (3NF)** – 1974
+- **Proposta por:** Edgar F. Codd, com aprimoramentos por **Raymond F. Boyce**.
+- **Objetivo:** Remover dependências transitivas, garantindo que todos os atributos dependam apenas da chave primária.
+- **Impacto:** Tornou o modelo relacional mais eficiente e fácil de manter.
+
+### **Forma Normal de Boyce-Codd (BCNF)** – 1974
+- **Proposta por:** Raymond F. Boyce e Edgar F. Codd.
+- **Objetivo:** Refinar a 3ª Forma Normal para resolver casos específicos em que a 3NF não era suficiente.
+- **Impacto:** Aumentou a robustez do design de banco de dados.
+
+### **4ª e 5ª Formas Normais (4NF e 5NF)** – Década de 1980
+- **Propostas por:** Ronald Fagin.
+- **Objetivo:** Resolver dependências multivaloradas (4NF) e garantir a decomposição sem perdas em junções complexas (5NF).
+- **Impacto:** São usadas em casos específicos de design avançado de bancos de dados.
+
+---
+
+## Benefícios da Normalização
+
+1. **Redução de Redundância:** Os dados são armazenados uma única vez, eliminando duplicações.
+2. **Consistência dos Dados:** Alterações são propagadas automaticamente, garantindo integridade.
+3. **Melhoria na Manutenção:** Modificar a estrutura do banco de dados ou atualizar informações torna-se mais simples.
+4. **Otimização do Espaço:** Reduz o tamanho necessário para armazenamento.
+
+---
+
+## Desafios e a Desnormalização
+
+Apesar dos benefícios, a normalização também trouxe desafios. Em alguns casos, a divisão excessiva dos dados em tabelas menores (especialmente em bancos de dados analíticos) pode impactar o desempenho devido à necessidade de várias junções (joins). Isso levou ao conceito de **desnormalização**, que sacrifica parte da normalização em favor de maior desempenho.
+
+A desnormalização é comum em sistemas de relatórios ou bancos de dados OLAP, onde a velocidade é mais importante que a consistência.
+
+---
+
+## Impacto da Normalização nos Bancos de Dados Modernos
+
+A normalização tornou-se a base do design de bancos de dados relacionais modernos, como **MySQL**, **PostgreSQL** e **SQL Server**. Além disso, os conceitos de normalização influenciaram o desenvolvimento de tecnologias não-relacionais, como bancos de dados NoSQL, que adaptam as ideias para lidar com grandes volumes de dados distribuídos.
+
+Mesmo após mais de 50 anos desde sua introdução, os princípios da normalização continuam sendo ensinados e aplicados em sistemas críticos, garantindo a eficiência e a integridade dos dados.
+
+---
+
+## Referências
+
+1. Codd, Edgar F. (1970). *"A Relational Model of Data for Large Shared Data Banks"*. Communications of the ACM.
+2. Boyce, Raymond F. e Codd, Edgar F. (1974). *"A Synthesis of the Third Normal Form and the Boyce-Codd Normal Form"*.
+3. Fagin, Ronald (1981). *"Multivalued Dependencies and a New Normal Form for Relational Databases"*.
+4. Elmasri, Ramez e Navathe, Shamkant B. (2010). *"Fundamentals of Database Systems"*.
+
+
+</details>
+
+<details>
+<summary>2-O que é Normalização em Banco de Dados?</summary>
 
    ## Introdução
 
@@ -230,8 +313,8 @@ Esta atividade demonstra como a normalização melhora a estrutura de um banco d
 
 </details>
 
- <details>
-<summary>3-Resolução da Atividade: Normalização de Dados em SQL Server </summary>
+<details>
+<summary>4-Resolução da Atividade: Normalização de Dados em SQL Server </summary>
 
 ## Tabela não Normalizada 
 
