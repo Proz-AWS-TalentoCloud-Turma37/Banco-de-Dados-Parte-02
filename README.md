@@ -230,6 +230,96 @@ Esta atividade demonstra como a normalização melhora a estrutura de um banco d
 
 </details>
 
+<summary>Resolução da Atividade: Normalização de Dados em SQL Server </summary>
+
+## Passo 1: Criar o Banco de Dados
+
+Crie o banco de dados chamado **LojaXYZ** para armazenar os dados normalizados.
+
+```sql
+CREATE DATABASE LojaXYZ;
+GO
+
+USE LojaXYZ;
+GO
+````
+## Passo 2: Criar Tabelas Normalizadas
+
+2.1 Tabela Categorias
+A tabela Categorias contém as informações sobre as categorias dos produtos. Cada categoria tem um identificador único (CategoriaID) e um nome (NomeCategoria).
+
+````sql
+CREATE TABLE Categorias (
+    CategoriaID INT PRIMARY KEY,
+    NomeCategoria NVARCHAR(50) NOT NULL
+);
+````
+
+2.2 Tabela Fornecedores
+A tabela Fornecedores contém informações dos fornecedores, incluindo um identificador único (FornecedorID), nome do fornecedor (NomeFornecedor) e telefone (TelefoneFornecedor).
+
+````sql
+CREATE TABLE Fornecedores (
+    FornecedorID INT PRIMARY KEY,
+    NomeFornecedor NVARCHAR(50) NOT NULL,
+    TelefoneFornecedor NVARCHAR(15) NOT NULL
+);
+````
+
+2.3 Tabela Produtos
+A tabela Produtos contém as informações sobre os produtos, incluindo identificador único (ProdutoID), nome do produto (NomeProduto), identificador da categoria (CategoriaID), identificador do fornecedor (FornecedorID) e preço (Preco).
+
+Chaves estrangeiras ligam a tabela Produtos às tabelas Categorias e Fornecedores.
+
+````sql
+CREATE TABLE Produtos (
+    ProdutoID INT PRIMARY KEY,
+    NomeProduto NVARCHAR(50) NOT NULL,
+    CategoriaID INT NOT NULL,
+    FornecedorID INT NOT NULL,
+    Preco DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID),
+    FOREIGN KEY (FornecedorID) REFERENCES Fornecedores(FornecedorID)
+);
+````
+
+## Passo 3: Inserir Dados nas Tabelas
+
+3.1 Inserir Dados na Tabela Categorias
+Adicione as categorias disponíveis.
+
+````sql
+INSERT INTO Categorias (CategoriaID, NomeCategoria)
+VALUES
+(1, 'Papelaria'),
+(2, 'Eletrônicos');
+````
+</details>
+
+3.2 Inserir Dados na Tabela Fornecedores
+Adicione os fornecedores e seus contatos.
+
+````sql
+INSERT INTO Fornecedores (FornecedorID, NomeFornecedor, TelefoneFornecedor)
+VALUES
+(101, 'Fornecedora ABC', '(11) 99999-9999'),
+(102, 'Fornecedora XYZ', '(21) 88888-8888'),
+(103, 'Fornecedora DEF', '(31) 77777-7777');
+````
+
+3.3 Inserir Dados na Tabela Produtos
+Adicione os produtos e relacione-os com suas categorias e fornecedores.
+
+````sql
+INSERT INTO Produtos (ProdutoID, NomeProduto, CategoriaID, FornecedorID, Preco)
+VALUES
+(1, 'Caneta Azul', 1, 101, 2.50),
+(2, 'Caneta Vermelha', 1, 101, 2.50),
+(3, 'Caderno A4', 1, 102, 15.00),
+(4, 'Calculadora', 2, 103, 45.00),
+(5, 'Mouse Sem Fio', 2, 103, 75.00);
+````
+
 
 ## Licença
 
