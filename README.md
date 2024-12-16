@@ -1,3 +1,6 @@
+
+![Logo](https://github.com/analianai/Banco-de-Dados-Parte-01/blob/main/hd-header.png?raw=true)
+
 # Normalização de Dados em Banco de Dados
 
 ## Introdução
