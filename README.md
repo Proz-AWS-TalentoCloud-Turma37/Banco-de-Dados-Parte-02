@@ -214,7 +214,7 @@ Sinta-se à vontade para contribuir com este repositório! Sugestões, correçõ
 </details>
 
 <details>
-<summary>2-Atividade Prática: Normalização de Dados em Banco de Dados</summary>
+<summary>3-Atividade Prática: Normalização de Dados em Banco de Dados</summary>
 
 Você foi contratado para organizar os dados de uma loja fictícia chamada **Loja XYZ**. Atualmente, as informações dos produtos, categorias e fornecedores estão armazenadas de forma desorganizada em uma única tabela. Sua tarefa é aplicar as regras de normalização e reorganizar os dados em tabelas normalizadas.
 
@@ -314,7 +314,225 @@ Esta atividade demonstra como a normalização melhora a estrutura de um banco d
 </details>
 
 <details>
-<summary>4-Resolução da Atividade: Normalização de Dados em SQL Server </summary>
+<summary>4-O que é um JOIN?</summary>
+
+## Introdução
+
+O **JOIN** é um comando no SQL utilizado para **combinar dados de duas ou mais tabelas** em um banco de dados relacional. A operação JOIN é essencial quando precisamos recuperar informações que estão armazenadas em diferentes tabelas relacionadas entre si.
+
+Os dados são combinados com base em uma **coluna comum** entre as tabelas, geralmente uma **chave primária** e uma **chave estrangeira**.
+
+---
+
+## Tipos de JOIN
+
+Existem diferentes tipos de JOIN, cada um com seu propósito específico. Os principais são:
+
+1. [**INNER JOIN**](#inner-join)
+2. [**LEFT JOIN (LEFT OUTER JOIN)**](#left-join-left-outer-join)
+3. [**RIGHT JOIN (RIGHT OUTER JOIN)**](#right-join-right-outer-join)
+4. [**FULL JOIN (FULL OUTER JOIN)**](#full-join-full-outer-join)
+5. [**CROSS JOIN**](#cross-join)
+
+---
+
+### 1. INNER JOIN
+
+O **INNER JOIN** retorna apenas os registros **que possuem correspondência** nas duas tabelas.
+
+**Sintaxe**:
+
+````sql
+SELECT tabela1.coluna, tabela2.coluna
+FROM tabela1
+INNER JOIN tabela2 ON tabela1.chave = tabela2.chave;
+````
+
+Considere as tabelas Clientes e Pedidos para todos os exemplos
+
+| ClienteID | Nome       |
+|-----------|------------|
+| 1         | João       |
+| 2         | Maria      |
+| 3         | Pedro      |
+
+| PedidoID | ClienteID | Produto  |
+|----------|-----------|----------|
+| 101      | 1         | Livro    |
+| 102      | 2         | Caneta   |
+| 103      | 1         | Caderno  |
+
+Exemplo:
+
+````sql
+SELECT Clientes.Nome, Pedidos.Produto
+FROM Clientes
+INNER JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
+````
+
+Resultado:
+
+| Nome  | Produto |
+|-------|---------|
+| João  | Livro   |
+| Maria | Caneta  |
+| João  | Caderno |
+
+Explicação:
+Apenas os registros que possuem ClienteID correspondente nas duas tabelas são retornados.
+
+### 2. LEFT JOIN (LEFT OUTER JOIN)
+
+O LEFT JOIN retorna todos os registros da tabela da esquerda e os registros correspondentes da tabela da direita. Caso não haja correspondência, os valores da tabela da direita serão nulos.
+
+Sintaxe:
+
+````sql
+SELECT tabela1.coluna, tabela2.coluna
+FROM tabela1
+LEFT JOIN tabela2 ON tabela1.chave = tabela2.chave;
+````
+
+Exemplo:
+
+````sql
+SELECT Clientes.Nome, Pedidos.Produto
+FROM Clientes
+LEFT JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
+````
+
+Resultado:
+
+| Nome  | Produto  |
+|-------|----------|
+| João  | Livro    |
+| Maria | Caneta   |
+| Pedro | NULL     |
+| João  | Caderno  |
+
+Explicação:
+
+Todos os clientes são retornados. Se não houver pedidos correspondentes, o campo Produto será NULL.
+
+### 3. RIGHT JOIN (RIGHT OUTER JOIN)
+
+O RIGHT JOIN retorna todos os registros da tabela da direita e os registros correspondentes da tabela da esquerda. Se não houver correspondência, os valores da tabela da esquerda serão nulos.
+
+Sintaxe:
+
+````sql
+SELECT tabela1.coluna, tabela2.coluna
+FROM tabela1
+RIGHT JOIN tabela2 ON tabela1.chave = tabela2.chave;
+````
+
+Exemplo:
+
+````sql
+SELECT Clientes.Nome, Pedidos.Produto
+FROM Clientes
+RIGHT JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
+````
+
+Resultado:
+
+| Nome  | Produto  |
+|-------|----------|
+| João  | Livro    |
+| Maria | Caneta   |
+| João  | Caderno  |
+
+Explicação:
+
+Todos os pedidos são retornados, incluindo os clientes associados a eles.
+
+### 4. FULL JOIN (FULL OUTER JOIN)
+
+O FULL JOIN retorna todos os registros de ambas as tabelas. Se não houver correspondência, os valores das colunas não relacionadas serão nulos.
+
+Sintaxe:
+
+````sql
+SELECT tabela1.coluna, tabela2.coluna
+FROM tabela1
+FULL JOIN tabela2 ON tabela1.chave = tabela2.chave;
+````
+
+Exemplo:
+
+````sql
+SELECT Clientes.Nome, Pedidos.Produto
+FROM Clientes
+FULL JOIN Pedidos ON Clientes.ClienteID = Pedidos.ClienteID;
+````
+
+Resultado:
+
+| Nome  | Produto  |
+|-------|----------|
+| João  | Livro    |
+| Maria | Caneta   |
+| Pedro | NULL     |
+| João  | Caderno  |
+
+Explicação:
+
+Todos os registros de ambas as tabelas são retornados, e os valores sem correspondência são preenchidos com NULL.
+
+### 5. CROSS JOIN
+
+O CROSS JOIN retorna o produto cartesiano entre as duas tabelas. Ou seja, cada linha da primeira tabela é combinada com todas as linhas da segunda tabela.
+
+Sintaxe:
+
+````sql
+SELECT tabela1.coluna, tabela2.coluna
+FROM tabela1
+CROSS JOIN tabela2;
+````
+
+Exemplo:
+
+````sql
+SELECT Clientes.Nome, Pedidos.Produto
+FROM Clientes
+CROSS JOIN Pedidos;
+
+````
+
+Resultado:
+
+| Nome  | Produto  |
+|-------|----------|
+| João  | Livro    |
+| João  | Caneta   |
+| João  | Caderno  |
+| Maria | Livro    |
+| Maria | Caneta   |
+| Maria | Caderno  |
+| Pedro | Livro    |
+| Pedro | Caneta   |
+| Pedro | Caderno  |
+
+Explicação:
+
+O comando FULL JOIN combina todos os registros das tabelas Clientes e Pedidos, retornando todas as correspondências e, quando não há correspondência, preenche com NULL os valores da tabela sem correspondência.
+
+### Conclusão
+
+O JOIN é uma ferramenta fundamental em SQL para combinar dados de múltiplas tabelas. A escolha do tipo de JOIN depende do resultado desejado e da relação entre os dados. O conhecimento de INNER, LEFT, RIGHT, FULL e CROSS JOIN é essencial para qualquer desenvolvedor que trabalhe com bancos de dados relacionais.
+
+### Referências
+
+1. [Documentação do SQL JOIN - W3Schools](https://www.w3schools.com/sql/sql_join.asp)<br/>
+2. [Documentação Oficial do MySQL](https://dev.mysql.com/doc/refman/8.0/en/join.html)<br/>
+3. [SQL Joins Tutorial - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/SQL/Joins)
+
+</details>
+
+<details>
+
+<summary>5-Resolução da Atividade: Normalização de Dados em SQL Server </summary>
 
 ## Tabela não Normalizada 
 
@@ -457,6 +675,26 @@ FROM Produtos p
 JOIN Categorias c ON p.CategoriaID = c.CategoriaID
 WHERE c.NomeCategoria = 'Papelaria';
 ````
+
+4.4 Listar como na tabela não relacional
+
+````sql
+SELECT 
+    Produtos.ProdutoID,
+    Produtos.NomeProduto,
+	 Categorias.NomeCategoria,
+    Fornecedores.FornecedorID,
+    Fornecedores.NomeFornecedor,
+    Fornecedores.TelefoneFornecedor,
+    Produtos.Preco
+FROM 
+    Produtos
+INNER JOIN 
+    Categorias ON Produtos.CategoriaID = Categorias.CategoriaID
+INNER JOIN 
+    Fornecedores ON Produtos.FornecedorID = Fornecedores.FornecedorID;
+````
+
 ## Estrutura Normalizada Final
 
 ### Tabela Produtos
@@ -487,8 +725,8 @@ WHERE c.NomeCategoria = 'Papelaria';
 
 </details>
 
+
+
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-
-
